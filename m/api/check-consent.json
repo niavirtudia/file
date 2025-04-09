@@ -1,3 +1,4 @@
 {
-  "consentRequired": true
+  "consentRequired": true,
+  "consentStateValue": "unknown"
 }
