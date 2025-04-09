@@ -1,3 +1,4 @@
 {
-  "success": true
+  "status": "success",
+  "message": "Consent stored successfully"
 }
