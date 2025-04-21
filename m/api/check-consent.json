@@ -1,5 +1,4 @@
 {
-  "consentRequired": true,
-  "consentStateValue": "unknown",
-  "consentString": ""
+  "userId": "user_id_nia-from-worker",
+  "consentStateValue": "unknown"
 }
