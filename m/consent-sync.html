@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Menyimpan Preferensi</title>
+  <script>
+    (function () {
+      function getParam(name) {
+        return new URLSearchParams(window.location.search).get(name);
+      }
+
+      const consent = getParam('consent');
+      const state = getParam('state');
+      const origin = getParam('__amp_source_origin');
+
+      if (consent === 'accepted' || consent === 'rejected') {
+        document.cookie = `cookie_consent_nia=${consent}; Max-Age=31536000; Path=/; SameSite=Lax; Secure`;
+      }
+
+      if (state) {
+        document.cookie = `cookie_consent_detail=${encodeURIComponent(state)}; Max-Age=31536000; Path=/; SameSite=Lax; Secure`;
+      }
+
+      const userId = document.cookie.match(/user_id_nia=[^;]+/)?.[0];
+      if (!userId) {
+        const uuid = crypto.randomUUID();
+        document.cookie = `user_id_nia=${uuid}; Max-Age=31536000; Path=/; SameSite=Lax; Secure`;
+      }
+
+      // Selesai, beri waktu browser set cookie lalu redirect
+      setTimeout(() => {
+        if (origin) {
+          window.location.replace(origin);
+        } else {
+          document.body.innerHTML = "<p>Preferensi Anda telah disimpan. Anda bisa menutup halaman ini.</p>";
+        }
+      }, 300);
+    })();
+  </script>
+</head>
+<body>
+  <p>Menyimpan preferensi Anda...</p>
+</body>
+</html>
