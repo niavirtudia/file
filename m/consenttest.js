@@ -596,7 +596,7 @@ setupEventListeners() {
   if (this.cookieIcon) {
     this.setupCookieIconEventListener();
   }
-},
+}
 
 setupBannerEventListeners() {
   const acceptButton = this.banner.querySelector('.accept-all');
